@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG")
 
 """
 "localhost",
@@ -20,9 +20,7 @@ DEBUG = False
     "super-heros-softfocus-git-dev-back.ruanpb.vercel.app",
     "super-heros-softfocus.vercel.app",
 """
-ALLOWED_HOSTS = [
-    '*'
-]
+ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -32,9 +30,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "accounts",
     "superheros",
     "combats",
+
     "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
@@ -53,9 +53,13 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
 ]
 
+
 # SSL SETTINGS
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#SECURE_SSL_REDIRECT = True
+if DEBUG:
+    pass
+else:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
 
 # CORS HEADERS
 CORS_ORIGIN_ALLOW_ALL = True
@@ -118,7 +122,7 @@ STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
 STATIC_ROOT = "/static/"
-STATIC_URL = "/static/"
+MEDIA_ROOT = "/media/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -134,6 +138,10 @@ REST_FRAMEWORK = {
         'user': '1000/second'
     }
 }
+
+# setting accounts how user model default
 AUTH_USER_MODEL = "accounts.Account"
+
+
+# HEROKU
 django_heroku.settings(locals())
-#super-heros-softfocus
