@@ -63,14 +63,28 @@ else:
 
 # CORS HEADERS
 CORS_ORIGIN_WHITELIST = [
-    'super-heros-softfocus.vercel.app',
-    'super-heros-softfocus.vercel.app',
+    'https://super-heros-softfocus.vercel.app',
+    'https://localhost:8000',
+    'https://localhost:3000',
 ]
-CORS_ORIGIN_REGEX_WHITELIST = [
-    'super-heros-softfocus.vercel.app',
-    'super-heros-softfocus.vercel.app',
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'UPDATE',
+    'PUT',
+    'POST',
 ]
-
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'origin',
+    'dnt',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 ROOT_URLCONF = "core.urls"
 
