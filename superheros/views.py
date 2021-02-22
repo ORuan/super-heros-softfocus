@@ -9,14 +9,13 @@ from rest_framework import status
 from .models import SuperHero
 from .serializers import SuperHeroSerializer
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 from rest_framework.authentication import TokenAuthentication
-
 
 class SuperHeroViewset(viewsets.ModelViewSet):
 
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
     serializer_class = SuperHeroSerializer
     queryset = SuperHero.objects.all()

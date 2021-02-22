@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # TOKEN 7c846ea8924e6f9fafc0b3967737623907e775be>
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY") 
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG") == 'True'
@@ -121,8 +121,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-STATIC_ROOT = "/static/"
-MEDIA_ROOT = "/media/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -137,6 +137,7 @@ REST_FRAMEWORK = {
         'anon': '100/second',
         'user': '1000/second'
     }
+
 }
 
 # setting accounts how user model default
