@@ -8,10 +8,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # TOKEN 7c846ea8924e6f9fafc0b3967737623907e775be>
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY") 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG")
+DEBUG = os.environ.get("DEBUG") == 'True'
 
 """
 "localhost",
