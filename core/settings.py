@@ -62,7 +62,15 @@ else:
     SECURE_SSL_REDIRECT = True
 
 # CORS HEADERS
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+    'super-heros-softfocus.vercel.app',
+    'super-heros-softfocus.vercel.app',
+]
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'super-heros-softfocus.vercel.app',
+    'super-heros-softfocus.vercel.app',
+]
+
 
 ROOT_URLCONF = "core.urls"
 
