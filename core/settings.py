@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-import django_heroku
+#import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -12,7 +12,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG") == 'True'
-
+print(DEBUG)
 """
 "localhost",
     "127.0.0.1",
@@ -52,7 +52,6 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
 ]
-
 
 # SSL SETTINGS
 if DEBUG:
@@ -158,13 +157,16 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/second',
         'user': '1000/second'
-    }
+    },
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+    )
 
 }
 
 # setting accounts how user model default
 AUTH_USER_MODEL = "accounts.Account"
 
-
 # HEROKU
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

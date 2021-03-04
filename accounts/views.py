@@ -13,10 +13,13 @@ from rest_framework.authtoken.models import Token
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from rest_framework.permissions import AllowAny
 
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+
+
 
 class AccountsViewset(viewsets.ModelViewSet):
-    # User = user_model()
     permission_classes = [AllowAny]
+    
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
@@ -32,7 +35,7 @@ class GetUuidToken(viewsets.ViewSet):
     """
     A simple ViewSet for listing or retrieving users.
     """
-    permission_classes = [AllowAny]
+    #permission_classes = [AllowAny]
 
     # verificar se o token é igual ao do localstorage
     def list(self, request, token):

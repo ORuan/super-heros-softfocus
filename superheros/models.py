@@ -6,14 +6,6 @@ class SuperHero(models.Model):
     class Meta:
         db_table = "SuperHero"
 
-    """set list of universes
-    DC = "DC COMICS"
-    MV = "MARVEL"
-    UNINVERSE_LIST = [
-        (DC, "DC COMICS"),
-        (MV, "MARVEL"),
-    ]
-    """
     universe = models.CharField(max_length=9, blank=False)
     name = models.CharField(verbose_name="name", null=False, max_length=40, unique=True)
     description = models.TextField(

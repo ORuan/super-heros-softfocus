@@ -14,7 +14,6 @@ from rest_framework.authentication import TokenAuthentication
 
 class SuperHeroViewset(viewsets.ModelViewSet):
 
-    authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
     serializer_class = SuperHeroSerializer
